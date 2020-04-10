@@ -1,0 +1,127 @@
+# i3blocks config file
+#
+#  ~/.config/i3blocks/config
+#   _______            __      __
+#  /_  __(_)____  ____/ /___  / /   ____ _____
+#  / / / // __ \/ __  // _ \/ /   / __ `/ __ \
+# / / / // / / / /_/ //  __/ /___/ /_/ / / / /
+#/_/ /_//_/ /_/\__,_/ \___/_____/\__,_/_/ /_/
+#
+# This is a personal config file. This may not work with your setup
+# Questions can be sent to michael@tindelan.xyz
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+# Change $SCRIPT_DIR to the location of your scripts!
+command=$SCRIPT_DIR/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+[mediaplayer]
+command=~/.config/i3blocks/mediaplayer/mediaplayer
+instance=
+interval=persist
+signal=10
+
+
+
+
+#updates
+[arch-update]
+command=~/.config/i3blocks/arch-update/arch-update
+interval=3600
+markup=pango
+LABEL=Updates:
+color=#e640ca
+
+#volume
+[volume]
+command=~/.config/i3blocks/volume/volume
+LABEL=♪
+#LABEL=VOL
+interval=2
+signal=10
+#STEP=5%
+#MIXER=[determined automatically]
+#SCONTROL=[determined automatically]
+color=#ff5733
+
+
+# Fetch the public IP address only on startup
+[public-ip]
+command=wget -qO - icanhazip.com
+label=wan-ip:
+interval=3600
+color=#c47dc1
+
+
+# Memory usage
+#
+# The type defaults to "mem" if the instance is not specified.
+[memory]
+command=~/.config/i3blocks/memory/memory
+label=Mem:
+interval=30
+color=#827dc4
+
+#[memory]
+#label=SWAP
+#instance=swap
+#separator=false
+#interval=30
+
+
+[wifi]
+command=~/.config/i3blocks/wifi/wifi
+label=wifi:
+INTERFACE=wlp4s0
+interval=60
+
+# CPU usage
+#
+# The script may be called with -w and -c switches to specify thresholds,
+# see the script for details.
+[cpu_usage]
+label=CPU
+interval=10
+min_width=CPU 100.00%
+#separator=false
+
+# Battery indicator
+#
+# The battery instance defaults to 0.
+[battery]
+command=~/.config/i3blocks/battery/battery
+interval=30
+#LABEL=BAT
+LABEL=⚡
+#BAT_NUMBER=0
+color=#d7ee32
+
+# Date Time
+#
+[time]
+command=date '+%d-%m-%Y %H:%M:%S'
+interval=5
+color=#e640ca
